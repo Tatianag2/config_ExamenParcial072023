@@ -10,7 +10,16 @@ spring:
   data:
     mongodb:
       database: catalog
-      port: 27017
+      port: 27018
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672
+
+queue:
+  series:
+    name: SerieQueue
 
 eureka:
   client:
