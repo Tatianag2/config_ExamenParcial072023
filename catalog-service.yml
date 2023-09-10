@@ -21,10 +21,6 @@ queue:
   series:
     name: SerieQueue
 
-queue:
-  movie:
-    name: MovieQueue
-
 eureka:
   client:
     register-with-eureka: true
