@@ -55,8 +55,8 @@ management:
 
 resilience4j:
   circuitbreaker:
-    instances:
-      catalog:
+    configs:
+      default:
         slidingWindowType: COUNT_BASED
         slidingWindowSize: 5
         failureRateThreshold: 50
@@ -65,11 +65,21 @@ resilience4j:
         registerHealthIndicator: true
         allowHealthIndicatorToFail: false
         automaticTransitionFromOpenToHalfOpenEnabled: true
-
-  retry:
     instances:
       catalog:
+        baseConfig: default
+      serie:
+        baseConfig: default
+
+  retry:
+    configs:
+      default:
+        maxAttempts: 2
         waitDuration: 1000
-        maxAttempts: 3
         retryExceptions:
           - feign.FeignException$InternalServerError
+    instances:
+      catalog:
+        baseConfig: default   
+      serie:
+        baseConfig: default   
